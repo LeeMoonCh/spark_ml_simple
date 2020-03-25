@@ -23,6 +23,7 @@ object ImputerDemo extends App{
     .setInputCols(Array("a", "b")) //对 a,b进行补全。
     .setOutputCols(Array("out_a", "out_b"))
 
+
   val model = imputer.fit(df)
   model.transform(df).show()
 
