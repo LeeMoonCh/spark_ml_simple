@@ -1,4 +1,10 @@
 package com.lc.study.no5classification.n1classification
+
+import org.apache.spark.ml.Pipeline
+import org.apache.spark.ml.classification.{RandomForestClassificationModel, RandomForestClassifier}
+import org.apache.spark.ml.evaluation.MulticlassClassificationEvaluator
+import org.apache.spark.ml.feature.{IndexToString, StringIndexer, VectorIndexer}
+
 /*
 随机森林。
 决策树分类算法，可以很好的对类别进行分类，但是，前提条件是我们对该书的叶子，也就是其分类因子进行了减少
@@ -12,5 +18,84 @@ https://blog.csdn.net/w952470866/article/details/78987265/
 
  */
 object RandomDorestClassifierDemo extends App {
+
+  //同样道理，我们先去看一下官方例子，官方例子也是非常复杂的。使用的数据集很难有特殊含义。
+  //之后我们会之后一个数据集进行练习观察。
+  import com.lc.study.spark
+
+  //整体流程其实和之前的决策树一样，毕竟本质上来说随机森林就是非常多个决策树组成的。
+  // 加载数据集，还是使用的libsvm数据集
+//  val data = spark.read.format("libsvm").load("data/simple_libsvm_data")
+//
+//  //同样道理，将label标签进行数值转换。
+//  val labelIndexer = new StringIndexer()
+//    .setInputCol("label")
+//    .setOutputCol("indexedLabel")
+//    .fit(data)
+//
+//  //特征选择器，进行具体特征选择。
+//  val featureIndexer = new VectorIndexer()
+//    .setInputCol("features")
+//    .setOutputCol("indexedFeatures")
+//    .setMaxCategories(4)
+//    .fit(data)
+//
+//  // 切割数据集为训练数据和测试数据。
+//  val Array(trainingData, testData) = data.randomSplit(Array(0.7, 0.3))
+//
+//  // 新建随机森林算法。
+//  val rf = new RandomForestClassifier()
+//    .setLabelCol("indexedLabel")
+//    .setFeaturesCol("indexedFeatures")
+//    .setNumTrees(10)
+//
+//  // 再讲标签转成文本标签。
+//  val labelConverter = new IndexToString()
+//    .setInputCol("prediction")
+//    .setOutputCol("predictedLabel")
+//    .setLabels(labelIndexer.labels)
+//
+//  //新建pipeline.
+//  val pipeline = new Pipeline()
+//    .setStages(Array(labelIndexer, featureIndexer, rf, labelConverter))
+//
+//  // 训练算法模型。
+//  val model = pipeline.fit(trainingData)
+//
+//  // 对测试数据进行预测。
+//  val predictions = model.transform(testData)
+//
+//  // 看看结果。
+//  predictions.select("predictedLabel", "label", "features").show(5)
+//
+//  //进行数据结果的正确率检测。
+//  val evaluator = new MulticlassClassificationEvaluator()
+//    .setLabelCol("indexedLabel")
+//    .setPredictionCol("prediction")
+//    .setMetricName("accuracy")
+//  val accuracy = evaluator.evaluate(predictions)
+//  println(s"Test Error = ${(1.0 - accuracy)}")
+//
+//  //最后打印算法模型。
+//  val rfModel = model.stages(2).asInstanceOf[RandomForestClassificationModel]
+//  println(s"Learned classification forest model:\n ${rfModel.toDebugString}")
+
+  //因为以上数据没有官方字段说明，所以我们也无法看到太实际的意义。
+  //所以我们使用泰坦尼克号的乘客数据，进行算法模型的构造。主要用来判断一个人在什么情况下能成功存活。
+  //担任实际意义也不是太大。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }

@@ -74,6 +74,8 @@ val data = spark.sparkContext.textFile("data/shouru50w.csv")
     .setMaxIter(10)
     .setRegParam(0.3)
     .setElasticNetParam(0.8)
+//    .setFamily("multinomial")//这样就代表使用多项式逻辑回归 进行模型训练。默认为auto，也就是会根据分类多少不同自动
+  //进行推导使用二项式还是多项式逻辑回归。
 
 
 

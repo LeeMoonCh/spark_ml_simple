@@ -37,7 +37,7 @@ features  ：为该算法求出来的特征向量，label为标签列(和clicked
 
 
  */
-object RFormula extends App{
+object RFormulaDemo extends App{
 
 
   import com.lc.study.spark
